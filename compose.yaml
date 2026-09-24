@@ -1,0 +1,21 @@
+# A local Postgres for development, so the app runs without a Neon account.
+# Start it with `docker compose up -d`; see docs/setup.md, step 3.
+services:
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: tramo
+      POSTGRES_PASSWORD: tramo
+      POSTGRES_DB: tramo
+    ports:
+      - "5432:5432"
+    volumes:
+      - tramo-db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U tramo -d tramo"]
+      interval: 2s
+      timeout: 5s
+      retries: 15
+
+volumes:
+  tramo-db:
