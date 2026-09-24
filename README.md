@@ -1,3 +1,5 @@
+![Tramo: an hourglass in a lime hexagon, next to the word TRAMO](docs/banner.webp)
+
 # Tramo: time tracking for small teams
 
 *Tu trabajo, tramo a tramo.* A web app to track how much time each person spends on each project: a timer that floats over your other apps, weekly views, and metrics. It's built for a small team running several projects in parallel. The type is brutalist, with poster-sized titles and numbers; the rest is soft, rounded and borderless.
@@ -80,7 +82,7 @@ The local database runs with Docker: `docker compose up -d --wait` starts it, `d
 | `messages/` | All UI copy, one file per locale |
 | `e2e/` | Playwright specs |
 | `prisma/` | The database schema and its migrations |
-| `docs/` | The setup guide |
+| `docs/` | The setup guide and the README banner |
 | `openspec/changes/time-tracking-mvp/` | Product discovery and technical decision records |
 
 ## Contributing
