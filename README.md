@@ -24,7 +24,7 @@ The full guide, with how to get every credential, is [docs/setup.md](docs/setup.
 
 1. Install dependencies: `pnpm install`.
 2. Start the local database: `docker compose up -d --wait`.
-3. Create a Google OAuth client, then write `.env.local` ([step 5](docs/setup.md#5-write-envlocal) says where each value comes from).
+3. Create a Google OAuth client, then `cp .env.example .env.local` and fill it in: every variable is explained there, and [step 5](docs/setup.md#5-write-envlocal) says where each value comes from.
 4. Create the tables: `pnpm db:migrate`.
 5. Start the app: `pnpm dev`, open <http://localhost:3000> and continue with Google. The people listed in `ADMIN_EMAILS` enter as admins; the first one creates the workspace.
 6. Verify: `pnpm lint && pnpm typecheck && pnpm test`.

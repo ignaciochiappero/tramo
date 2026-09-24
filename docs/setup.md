@@ -12,7 +12,7 @@ This guide takes a fresh clone to a running app on your machine, then to product
 | 2 | [Install dependencies](#2-install-dependencies) | Agent | `pnpm install` ends with `Done` |
 | 3 | [Start a database](#3-start-a-database) | Agent (local) or Human (Neon) | `docker compose ps` shows `db` as healthy |
 | 4 | [Get the Google credentials](#4-get-the-google-credentials) | Human | A client ID and secret in hand |
-| 5 | [Write `.env.local`](#5-write-envlocal) | Agent, then Human | Six variables set, file git-ignored |
+| 5 | [Write `.env.local`](#5-write-envlocal) | Agent, then Human | Seven variables set, file git-ignored |
 | 6 | [Create the tables](#6-create-the-tables) | Agent | `All migrations have been successfully applied` |
 | 7 | [Run the app](#7-run-the-app) | Agent, then Human | You're signed in as the admin |
 | 8 | [Check the code](#8-check-the-code) | Agent | lint, typecheck, test and build pass |
@@ -102,26 +102,15 @@ Google warns that changes to a client can take from 5 minutes to a few hours to 
 
 ## 5. Write `.env.local`
 
-**Agent:** create `.env.local` in the project root from this template, and fill in only what isn't secret: the local database strings (option A), `BETTER_AUTH_URL` and the admin emails.
-
-**Human:** paste the secrets into the file yourself.
+**Agent:** copy the template, which explains every variable in place:
 
 ```bash
-# Database (step 3). With option A, both are the local string.
-DATABASE_URL="postgresql://tramo:tramo@localhost:5432/tramo"
-DATABASE_URL_UNPOOLED="postgresql://tramo:tramo@localhost:5432/tramo"
-
-# Better Auth
-BETTER_AUTH_SECRET=""
-BETTER_AUTH_URL="http://localhost:3000"
-
-# Google OAuth (step 4)
-GOOGLE_CLIENT_ID=""
-GOOGLE_CLIENT_SECRET=""
-
-# Comma-separated Google emails that enter as workspace admins
-ADMIN_EMAILS="you@example.com"
+cp .env.example .env.local
 ```
+
+It already holds the local database strings (option A) and `BETTER_AUTH_URL` for local development. Set `ADMIN_EMAILS`, and with option B, the Neon strings.
+
+**Human:** paste the secrets into `.env.local` yourself: `BETTER_AUTH_SECRET`, `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET`.
 
 How to get each value:
 
@@ -190,7 +179,7 @@ pnpm test:e2e
 
 1. **Human:** push the repository to GitHub with the app already in it. In Vercel, choose **Add New → Project** and import it.
 2. **Human:** check that **Framework Preset** says **Next.js**, and leave Build Command, Output Directory and Install Command without overrides.
-3. **Human:** create the production database (step 3, option B), and add the six variables in **Settings → Environment Variables**:
+3. **Human:** create the production database (step 3, option B), and add the seven variables in **Settings → Environment Variables**:
    - the production database strings;
    - a new `BETTER_AUTH_SECRET`;
    - `BETTER_AUTH_URL` set to the production URL, for example `https://your-project.vercel.app`;
