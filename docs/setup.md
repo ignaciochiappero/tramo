@@ -8,7 +8,7 @@ This guide takes a fresh clone to a running app on your machine, then to product
 
 | # | Step | Who | Done when |
 | --- | --- | --- | --- |
-| 1 | [Install the tools](#1-install-the-tools) | Agent | `node -v` is 20.9 or newer and `pnpm -v` prints 11.5.2 |
+| 1 | [Install the tools](#1-install-the-tools) | Agent | `node -v` is 24, 25 or 26 and `pnpm -v` prints 11.5.2 |
 | 2 | [Install dependencies](#2-install-dependencies) | Agent | `pnpm install` ends with `Done` |
 | 3 | [Start a database](#3-start-a-database) | Agent (local) or Human (Neon) | `docker compose ps` shows `db` as healthy |
 | 4 | [Get the Google credentials](#4-get-the-google-credentials) | Human | A client ID and secret in hand |
@@ -22,7 +22,7 @@ This guide takes a fresh clone to a running app on your machine, then to product
 
 | Tool | Version | Check |
 | --- | --- | --- |
-| Node.js | 20.9 or newer (the current LTS is fine) | `node -v` |
+| Node.js | 24, 25 or 26 (the current LTS is fine) | `node -v` |
 | pnpm | 11.5.2, pinned in `package.json` | `pnpm -v` |
 | Docker Desktop | any recent, for the local database | `docker compose version` |
 | Git | any recent | `git --version` |
